@@ -67,6 +67,7 @@ const formulario = document.querySelector("form");
 const table = document.querySelector("table");
 const input = document.querySelector('form input[type="text"]');
 
+
 table.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     e.target.parentElement.innerHTML = "";
@@ -105,6 +106,27 @@ const actualizarMensaje = () => {
   parqueoLleno(espaciosLibres,celdasVacias);
 };
 
+const parqueoLleno = (espaciosLibres, celdasVacias) => {
+  const buttonAgregar = document.querySelector('form button');
+
+  if(celdasVacias.length === 0){
+    buttonAgregar.disabled = true;
+    input.disabled = true;
+    espaciosLibres.innerText = "Parqueo lleno";
+    espaciosLibres.style.color = ('red');
+  }else if(celdasVacias.length === 1){
+    espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
+    espaciosLibres.style.color.remove('red');
+    buttonAgregar.disabled = false;
+    input.disabled = false;
+  }else{
+    espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
+    espaciosLibres.style.color.remove('red');
+    buttonAgregar.disabled = false;
+    input.disabled = false;
+  }
+}
+
 formulario.addEventListener("submit", (e) => {
   e.preventDefault();
   
@@ -120,24 +142,3 @@ formulario.addEventListener("submit", (e) => {
 
   input.value = "";
 });
-
-const parqueoLleno = (espaciosLibres, celdasVacias) => {
-  const buttonAgregar = document.querySelector('form button');
-
-  if(celdasVacias.length === 0){
-    buttonAgregar.disabled = true;
-    input.disabled = true;
-    espaciosLibres.innerHTML = "Parqueo lleno";
-    espaciosLibres.style.color = ('red');
-  }else if(celdasVacias.length === 1){
-    espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
-    espaciosLibres.style.color.remove('red');
-    buttonAgregar.disabled = false;
-    input.disabled = false;
-  }else{
-    espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
-    espaciosLibres.style.color.remove('red');
-    buttonAgregar.disabled = false;
-    input.disabled = false;
-  }
-}
