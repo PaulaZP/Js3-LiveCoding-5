@@ -113,15 +113,17 @@ const parqueoLleno = (espaciosLibres, celdasVacias) => {
     buttonAgregar.disabled = true;
     input.disabled = true;
     espaciosLibres.innerText = "Parqueo lleno";
-    espaciosLibres.style.color = ('red');
+    espaciosLibres.style.color = 'red';
+
   }else if(celdasVacias.length === 1){
     espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
-    espaciosLibres.style.color.remove('red');
+    espaciosLibres.style.color = "";
     buttonAgregar.disabled = false;
     input.disabled = false;
+    
   }else{
     espaciosLibres.innerHTML = `Tienes ${celdasVacias.length} parqueos libres`;
-    espaciosLibres.style.color.remove('red');
+    espaciosLibres.style.color = "";
     buttonAgregar.disabled = false;
     input.disabled = false;
   }
